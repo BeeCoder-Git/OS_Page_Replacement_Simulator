@@ -1,0 +1,205 @@
+:root {
+    --primary: #2563eb;
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --text: #1e293b;
+    --hit: #dcfce7;
+    --hit-text: #166534;
+    --fault: #fee2e2;
+    --fault-text: #991b1b;
+    --border: #e2e8f0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 20px;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+/* Controls */
+.controls {
+    background: var(--surface);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border);
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+label {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+input[type="text"],
+input[type="number"] {
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: auto;
+}
+
+button:hover {
+    background-color: #1d4ed8;
+}
+
+.preset-btn {
+    background-color: #64748b;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    width: 100%;
+}
+
+/* Charts Section */
+.charts-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* Slightly reduced min-width */
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.chart-card {
+    background: var(--surface);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 4px rgb(0 0 0 / 0.05);
+    /* height: 350px;  <-- REMOVED FIXED HEIGHT */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* New container for the canvas to control its size */
+.chart-canvas-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    /* Set a fixed height for the chart area */
+}
+
+/* Results Grid */
+.results-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.algo-card {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 0.05);
+    border: 1px solid var(--border);
+    overflow-x: auto;
+}
+
+.algo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border);
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.stats span {
+    margin-left: 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: #f1f5f9;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+/* Visualization Table */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 600px;
+}
+
+th,
+td {
+    padding: 0.5rem;
+    text-align: center;
+    border: 1px solid var(--border);
+}
+
+th {
+    background-color: #f1f5f9;
+}
+
+.current-page-header {
+    background-color: #e2e8f0;
+    font-weight: bold;
+}
+
+.status-hit {
+    background-color: var(--hit);
+    color: var(--hit-text);
+    font-weight: bold;
+}
+
+.status-fault {
+    background-color: var(--fault);
+    color: var(--fault-text);
+    font-weight: bold;
+}
+
+.error-msg {
+    color: var(--fault-text);
+    background: var(--fault);
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    display: none;
+    border: 1px solid #fca5a5;
+}
