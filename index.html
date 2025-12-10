@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OS Page Replacement Visualizer</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #64748b;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --accent: #e0f2fe;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--surface);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: radial-gradient(circle at top, var(--accent) 0%, transparent 70%);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.05rem;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Features Grid */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+        }
+
+        h3 { margin-top: 0; margin-bottom: 0.5rem; font-size: 1.5rem; }
+        .card p { color: var(--text-muted); margin-bottom: 0; }
+
+        /* Belady Section */
+        .belady-section {
+            background: #1e293b;
+            color: white;
+            border-radius: 24px;
+            padding: 4rem;
+            margin: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .belady-section h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .belady-section p { color: #94a3b8; font-size: 1.1rem; max-width: 700px; margin: 0 auto 2rem auto; }
+        .belady-tag {
+            background: #ef4444;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            border-top: 1px solid #e2e8f0;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .belady-section { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            OS Sim
+        </a>
+        <div class="nav-links">
+            <a href="https://github.com" target="_blank">GitHub</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Master Page Replacement<br>Algorithms</h1>
+        <p>An interactive tool to visualize FIFO, LRU, and Optimal algorithms. Experiment with custom inputs and discover the counter-intuitive Belady's Anomaly.</p>
+        <a href="simulator.html" class="cta-button">Launch Simulator</a>
+    </header>
+
+    <div class="container">
+        <div class="features-grid">
+            <div class="card">
+                <div class="icon-box">F</div>
+                <h3>FIFO</h3>
+                <p>First-In-First-Out. The simplest algorithm that replaces the oldest page in memory. Prone to performance anomalies.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon-box">L</div>
+                <h3>LRU</h3>
+                <p>Least Recently Used. Replaces the page that hasn't been used for the longest time. A popular approximation of optimal behavior.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon-box">O</div>
+                <h3>Optimal</h3>
+                <p>The theoretical best algorithm. It looks into the future to replace the page that won't be used for the longest duration.</p>
+            </div>
+        </div>
+
+        <div class="belady-section">
+            <span class="belady-tag">Interactive Demo</span>
+            <h2>What is Belady's Anomaly?</h2>
+            <p>Common logic suggests that giving a program more memory frames should reduce page faults. However, with FIFO, <strong>increasing frames can sometimes increase faults</strong>. Use our tool to prove this phenomenon.</p>
+            <a href="simulator.html" class="cta-button" style="background: white; color: #1e293b;">Try the Demo</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>Operating Systems Project • Built with HTML, CSS & JS</p>
+    </footer>
+
+</body>
+</html>
