@@ -14,6 +14,7 @@
             --text-main: #0f172a;
             --text-muted: #475569;
             --accent: #e0f2fe;
+            --code-bg: #1e293b;
         }
 
         body {
@@ -58,7 +59,7 @@
         /* Hero Section */
         .hero {
             text-align: center;
-            padding: 6rem 2rem;
+            padding: 6rem 2rem 4rem;
             background: radial-gradient(circle at top, var(--accent) 0%, transparent 70%);
         }
 
@@ -94,17 +95,19 @@
             transform: translateY(-2px);
         }
 
-        /* Features Grid */
+        /* Container */
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 4rem 2rem;
         }
 
+        /* Features Grid */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            margin-bottom: 6rem;
         }
 
         .card {
@@ -137,29 +140,66 @@
         h3 { margin-top: 0; margin-bottom: 0.5rem; font-size: 1.5rem; }
         .card p { color: var(--text-muted); margin-bottom: 0; }
 
-        /* Belady Section */
-        .belady-section {
-            background: #1e293b;
-            color: white;
+        /* Documentary Section */
+        .doc-section {
+            background: white;
             border-radius: 24px;
             padding: 4rem;
-            margin: 4rem 2rem;
-            text-align: center;
-        }
-        
-        .belady-section h2 { font-size: 2.5rem; margin-bottom: 1rem; }
-        .belady-section p { color: #94a3b8; font-size: 1.1rem; max-width: 700px; margin: 0 auto 2rem auto; }
-        .belady-tag {
-            background: #ef4444;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 4rem;
         }
 
+        .doc-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .doc-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .doc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .doc-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .doc-content p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Code/Example Box */
+        .code-box {
+            background: var(--code-bg);
+            color: #e2e8f0;
+            padding: 2rem;
+            border-radius: 12px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #334155;
+        }
+        
+        .stat-row:last-child { border-bottom: none; }
+        .highlight-red { color: #f87171; font-weight: bold; }
+        .highlight-green { color: #4ade80; font-weight: bold; }
+
+        /* Footer */
         footer {
             text-align: center;
             padding: 2rem;
@@ -170,7 +210,8 @@
 
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
-            .belady-section { padding: 2rem; }
+            .doc-grid { grid-template-columns: 1fr; }
+            .doc-section { padding: 2rem; }
         }
     </style>
 </head>
@@ -179,16 +220,16 @@
     <nav>
         <a href="#" class="logo">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-            OS Sim
+            Team-Abstract
         </a>
         <div class="nav-links">
-            <a href="https://github.com" target="_blank">GitHub</a>
+            <a href="simulator.html" style="color: var(--primary);">Open Simulator →</a>
         </div>
     </nav>
 
     <header class="hero">
-        <h1>Master Page Replacement<br>Algorithms</h1>
-        <p>An interactive tool to visualize FIFO, LRU, and Optimal algorithms. Experiment with custom inputs and discover the counter-intuitive Belady's Anomaly.</p>
+        <h1>Page Replacement &<br>Belady's Anomaly</h1>
+        <p>A visual exploration of Operating System memory management. Discover why adding more RAM doesn't always make your computer faster.</p>
         <a href="simulator.html" class="cta-button">Launch Simulator</a>
     </header>
 
@@ -199,25 +240,58 @@
                 <h3>FIFO</h3>
                 <p>First-In-First-Out. The simplest algorithm that replaces the oldest page in memory. Prone to performance anomalies.</p>
             </div>
-
             <div class="card">
                 <div class="icon-box">L</div>
                 <h3>LRU</h3>
-                <p>Least Recently Used. Replaces the page that hasn't been used for the longest time. A popular approximation of optimal behavior.</p>
+                <p>Least Recently Used. Replaces the page that hasn't been used for the longest time. A "Stack Algorithm" that is stable.</p>
             </div>
-
             <div class="card">
                 <div class="icon-box">O</div>
                 <h3>Optimal</h3>
-                <p>The theoretical best algorithm. It looks into the future to replace the page that won't be used for the longest duration.</p>
+                <p>The theoretical limit. It looks into the future to replace the page that won't be used for the longest duration.</p>
             </div>
         </div>
 
-        <div class="belady-section">
-            <span class="belady-tag">Interactive Demo</span>
-            <h2>What is Belady's Anomaly?</h2>
-            <p>Common logic suggests that giving a program more memory frames should reduce page faults. However, with FIFO, <strong>increasing frames can sometimes increase faults</strong>. Use our tool to prove this phenomenon.</p>
-            <a href="simulator.html" class="cta-button" style="background: white; color: #1e293b;">Try the Demo</a>
+        <section class="doc-section">
+            <div class="doc-header">
+                <h2>The Science Behind the Anomaly</h2>
+                <p>Why does adding more memory sometimes break things?</p>
+            </div>
+            
+            <div class="doc-grid">
+                <div class="doc-content">
+                    <h4>The History</h4>
+                    <p>In 1969, computer scientist <strong>László Bélady</strong> demonstrated a counter-intuitive phenomenon. While attempting to optimize memory patterns, he discovered that for certain reference strings, increasing the page frame count (memory size) resulted in <em>more</em> page faults, not fewer.</p>
+
+                    <h4>The Stack Property</h4>
+                    <p>Why does this happen? It comes down to the "Stack Inclusion Property". Algorithms like LRU and OPTIMAL are "Stack Algorithms"—meaning the pages contained in a memory of size <em>N</em> are always a subset of pages in memory of size <em>N+1</em>.</p>
+                    <p><strong>FIFO is not a Stack Algorithm.</strong> Because it blindly removes the oldest page, a slight change in frame size can completely desynchronize the "age" of pages, causing popular pages to be evicted just before they are needed.</p>
+                </div>
+
+                <div class="code-box">
+                    <div style="margin-bottom: 1rem; color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">The Classic Example</div>
+                    <div style="margin-bottom: 1.5rem; font-weight: bold;">Ref String: 1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5</div>
+                    
+                    <div class="stat-row">
+                        <span>FIFO with 3 Frames:</span>
+                        <span class="highlight-green">9 Faults</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>FIFO with 4 Frames:</span>
+                        <span class="highlight-red">10 Faults (Anomaly!)</span>
+                    </div>
+                    
+                    <div style="margin-top: 1.5rem; border-top: 1px solid #334155; padding-top: 1rem;">
+                        <span style="color: #60a5fa;">> Comparison:</span><br>
+                        With 4 frames, pages 1 and 2 are evicted earlier than in the 3-frame scenario due to the FIFO queue shifting, causing misses when they are requested again.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div style="text-align: center;">
+            <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Ready to see the math in action?</p>
+            <a href="simulator.html" class="cta-button" style="background: #1e293b;">Start Experiment</a>
         </div>
     </div>
 
